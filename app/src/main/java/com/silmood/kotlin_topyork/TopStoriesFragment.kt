@@ -3,7 +3,6 @@ package com.silmood.kotlin_topyork
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,5 +40,15 @@ class TopStoriesFragment : Fragment(){
 
         list_top_stories.setHasFixedSize(true)
         list_top_stories.layoutManager = LinearLayoutManager(context)
+        list_top_stories.adapter = TopStoriesAdapter(getStories())
+
+    }
+
+    fun getStories(): List<TopStory>{
+        val news = mutableListOf<TopStory>()
+        for (i in 1..10){
+            news.add(TopStory("Title $i", "Abstract $i", "Section $i","SubSection $i", "Author $i" ))
+        }
+        return news;
     }
 }

@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 class MainActivity : FragmentContainerActivity() {
 
     override fun createFragment(): Fragment {
-        throw UnsupportedOperationException()
+        return TopStoriesFragment()
     }
 
     override fun getLayout(): Int {

@@ -3,6 +3,7 @@ package com.silmood.kotlin_topyork
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.item_top_story.view.*
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -32,14 +33,20 @@ class TopStoriesAdapter(val stories: List<TopStory>) : RecyclerView.Adapter<TopS
     }
 
     override fun getItemCount(): Int {
-        throw UnsupportedOperationException()
+        return stories.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        throw UnsupportedOperationException()
+        holder?.bindItem(stories[position])
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
+        fun bindItem(story: TopStory){
+            itemView.label_title.text = story.title;
+            itemView.label_by_line.text = story.author;
+            itemView.label_section.text = story.section;
+            itemView.label_sub_section.text = story.subSection;
+        }
     }
 }
