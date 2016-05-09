@@ -25,7 +25,11 @@ import kotlinx.android.synthetic.main.item_top_story.view.*
  *
  * Created by Pedro Hernández on 04/2016.
  */
-class TopStoriesAdapter(val stories: List<TopStory>) : RecyclerView.Adapter<TopStoriesAdapter.ViewHolder>() {
+class TopStoriesAdapter() : RecyclerView.Adapter<TopStoriesAdapter.ViewHolder>() {
+
+    private val stories by lazy {
+        mutableListOf<TopStory>()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder? {
         val view = parent.inflate(R.layout.item_top_story)
@@ -38,6 +42,11 @@ class TopStoriesAdapter(val stories: List<TopStory>) : RecyclerView.Adapter<TopS
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         holder?.bindItem(stories[position])
+    }
+
+    fun addStories(stories: List<TopStory>){
+        this.stories.addAll(stories)
+        notifyDataSetChanged()
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
